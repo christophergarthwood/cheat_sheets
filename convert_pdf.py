@@ -4,7 +4,7 @@ import os
 from PyPDF2 import PdfReader
 
 input_extension="PDF"
-output_extension="PNG"
+output_extension="GIF"
 
 if len(sys.argv) > 1:
     try:

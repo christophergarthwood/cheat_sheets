@@ -3,8 +3,8 @@
 #sudo apt install imagemagick
 export cmd_convert="/usr/bin/convert";
 
-img_extensions=( JPEG JPG GIF TIFF TIF )
-export target_extension="png"
+img_extensions=( JPEG JPG TIFF TIF PNG )
+export target_extension="gif"
 
 for ext in ${img_extensions[@]}
 do
@@ -17,8 +17,8 @@ do
         export just_the_dirname=$(dirname ${file});
         export just_the_filename=$(basename ${file});
         export just_the_filename="${just_the_filename%.*}";
-        echo ".........${cmd_convert} ${file} ${just_the_dirname}/${just_the_filename}.${target_extension}";
-        ${cmd_convert} "${file}" "${just_the_dirname}/${just_the_filename}.${target_extension}";
+        echo ".........${cmd_convert} ${file} -flatten ${just_the_dirname}/${just_the_filename}.${target_extension}";
+        ${cmd_convert} "${file}" -flatten "${just_the_dirname}/${just_the_filename}.${target_extension}";
         status=$?
         if [ ${status} -ne 0 ];
         then
